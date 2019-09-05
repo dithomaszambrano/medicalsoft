@@ -9,13 +9,13 @@ public class Medicalsoft {
 
     public static void main(String[] args) {
         
-        Persona primerPersona = new Persona("Damaso", "Thomas");
+        Medico medico1 = new Medico();
         
+        medico1.setNombre("Omar");
+        medico1.setApellido("Maremco");
+        medico1.setFecha_nacimienta("22-02-1981");
         
-        //primerMedico.apellido = "Thomas";
-        
-        System.out.println("Nombre del medico: "+primerPersona.getNombre());
-        //System.out.println("Apellido del medico: "+primerPersona.getApellido())
+        System.out.println("El Medico: "+medico1.getFullNombre()+" y su edad es: "+medico1.getedad());
     }
     
 }

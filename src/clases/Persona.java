@@ -5,6 +5,10 @@
  */
 package clases;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author estudiante
@@ -21,10 +25,22 @@ public class Persona {
     private String telefono;
     private String celular;
 
-    public Persona(String nom, String ape) {
-        this.nombre = nom;
-        this.apellido = ape;
+    public Persona() {
     }
+
+    public Persona(String nombre, String apellido, String fecha_nacimienta, String identidad, String genero, String direccion, String email, String telefono, String celular) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fecha_nacimienta = fecha_nacimienta;
+        this.identidad = identidad;
+        this.genero = genero;
+        this.direccion = direccion;
+        this.email = email;
+        this.telefono = telefono;
+        this.celular = celular;
+    }
+
+   
 
     public String getNombre() {
         return nombre.toUpperCase();
@@ -96,5 +112,26 @@ public class Persona {
 
     public void setCelular(String celular) {
         this.celular = celular;
+    }
+    
+    public int getedad(){
+        
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate fechaNac = LocalDate.parse(this.fecha_nacimienta, fmt);
+        LocalDate ahora = LocalDate.now();
+        
+        Period periodo = Period.between(fechaNac, ahora);
+        
+        return periodo.getYears();
+    }
+    
+    public boolean get_Valaida_Correo(){
+        
+        return true;
+    }
+    
+    public String getFullNombre(){
+        
+        return this.nombre+" "+this.apellido;
     }
 }
