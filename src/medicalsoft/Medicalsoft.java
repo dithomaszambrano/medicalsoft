@@ -3,6 +3,7 @@ package medicalsoft;
 
 import clases.Medico;
 import clases.Persona;
+import javax.swing.JOptionPane;
 
 
 public class Medicalsoft {
@@ -11,11 +12,14 @@ public class Medicalsoft {
         
         Medico medico1 = new Medico();
         
-        medico1.setNombre("Omar");
-        medico1.setApellido("Maremco");
-        medico1.setFecha_nacimienta("22-02-1981");
+        medico1.setNombre(JOptionPane.showInputDialog("digite nombre del medico"));
+        medico1.setApellido(JOptionPane.showInputDialog("digite apellido del medico"));
+        medico1.setFecha_nacimienta(JOptionPane.showInputDialog("fecha de nacimiento"));
+        medico1.setEmail(JOptionPane.showInputDialog("email"));
         
-        System.out.println("El Medico: "+medico1.getFullNombre()+" y su edad es: "+medico1.getedad());
+        System.out.println("El Medico: " + medico1.getFullNombre() + "\n"
+                + "La edad del medico es: " + medico1.getedad() + "\n"
+                + "y Su Email es: " + medico1.get_Valaida_Correo());
     }
     
 }

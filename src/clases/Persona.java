@@ -1,18 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package clases;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-/**
- *
- * @author estudiante
- */
+
 public class Persona {
     
      private String nombre;
@@ -26,6 +20,8 @@ public class Persona {
     private String celular;
 
     public Persona() {
+        
+        
     }
 
     public Persona(String nombre, String apellido, String fecha_nacimienta, String identidad, String genero, String direccion, String email, String telefono, String celular) {
@@ -116,22 +112,28 @@ public class Persona {
     
     public int getedad(){
         
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate fechaNac = LocalDate.parse(this.fecha_nacimienta, fmt);
-        LocalDate ahora = LocalDate.now();
+        DateTimeFormatter DTF = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate fechaNacimiento = LocalDate.parse(this.fecha_nacimienta, DTF);
+        LocalDate hoy = LocalDate.now();
         
-        Period periodo = Period.between(fechaNac, ahora);
+        Period periodo = Period.between(fechaNacimiento, hoy);
         
         return periodo.getYears();
+        
     }
     
     public boolean get_Valaida_Correo(){
         
-        return true;
+        Pattern p = Pattern.compile("[-\\w\\.]+@[\\.\\w]+\\.\\w+");
+
+        Matcher m = p.matcher(email);
+         
+        return m.find();
     }
     
     public String getFullNombre(){
         
-        return this.nombre+" "+this.apellido;
+        return this.nombre.toUpperCase()+" "+this.apellido.toUpperCase();
+        
     }
 }
