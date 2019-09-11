@@ -128,7 +128,7 @@ public class Persona {
 
         Matcher m = p.matcher(email);
          
-        return m.find();
+        return m.matches();
     }
     
     public String getFullNombre(){
@@ -136,4 +136,5 @@ public class Persona {
         return this.nombre.toUpperCase()+" "+this.apellido.toUpperCase();
         
     }
+    
 }
