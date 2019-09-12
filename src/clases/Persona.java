@@ -92,6 +92,7 @@ public class Persona {
 
     public void setEmail(String email) {
         this.email = email;
+        Validacion.email = email;
     }
 
     public String getTelefono() {
@@ -112,8 +113,8 @@ public class Persona {
     
     public int getedad(){
         
-        DateTimeFormatter DTF = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate fechaNacimiento = LocalDate.parse(this.fecha_nacimienta, DTF);
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate fechaNacimiento = LocalDate.parse(this.fecha_nacimienta, fmt);
         LocalDate hoy = LocalDate.now();
         
         Period periodo = Period.between(fechaNacimiento, hoy);
@@ -122,14 +123,14 @@ public class Persona {
         
     }
     
-    public boolean get_Valaida_Correo(){
+    /*public boolean get_Valaida_Correo(){
         
         Pattern p = Pattern.compile("[-\\w\\.]+@[\\.\\w]+\\.\\w+");
 
         Matcher m = p.matcher(email);
          
         return m.matches();
-    }
+    }*/
     
     public String getFullNombre(){
         
